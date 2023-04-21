@@ -12,7 +12,7 @@
 #'
 #' @return Output object
 convertFormat <- function(obj, from = c("anndata", "seurat", "sce", "loom"), to = c("anndata", "loom", "sce", "seurat", "cds"), outFile = NULL,
-                          main_layer = NULL, ...) {
+                          main_layer = "data", transfer_layers = "counts", assay = NULL ...) {
   from <- match.arg(from)
   to <- match.arg(to)
 
@@ -26,5 +26,5 @@ convertFormat <- function(obj, from = c("anndata", "seurat", "sce", "loom"), to 
     finally = {}
   )
 
-  return(func(obj, outFile = outFile, main_layer = main_layer, ...))
+  return(func(obj, outFile = outFile, main_layer = main_layer, transfer_layers = transfer_layers, assay = assay ...))
 }
